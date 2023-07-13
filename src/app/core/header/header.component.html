@@ -1,25 +1,58 @@
-<hr />
-
-<nav class="nav">
-  <div class="nav-logo">
-    <p>LOGO .</p>
+<div class="container text-center mt-5">
+  <div class="row">
+    <div class="col-md">
+      <nav class="navbar rounded-3 bg-warning">
+        <div class="container">
+          <div class="com-md">
+            <a class="navbar-brand" routerLink="/">
+              <img
+                class="img-thumbnail"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzZ7IMaYVTbYsTyOOrelOHG7iScussAr_MBA&usqp=CAU"
+                alt="image"
+                width="80"
+                class="d-inline-block align-text-center"
+              />
+              My Recipes
+            </a>
+          </div>
+          <ul class="nav justify-content-end nav-underline">
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/catalog">Catalog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/recipes/new-recipe"
+                >Add Recipe</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/recipes/my-recipe"
+                >My Recipes</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/search">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/auth/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/auth/register"
+                >Register</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white">Logout</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li> -->
+          </ul>
+        </div>
+        <!-- Navbar content -->
+      </nav>
+    </div>
   </div>
-  <div class="nav-menu" id="navMenu">
-    <ul>
-      <li><a routerLink="/home" class="link">Home</a></li>
-      <li><a routerLink="" class="link">Blog</a></li>
-      <li><a routerLink="" class="link">Services</a></li>
-      <li><a routerLink="" class="link">About</a></li>
-    </ul>
-  </div>
-  <div class="nav-button">
-    <button class="btn white-btn" id="loginBtn" routerLink="/auth/login">
-      Sign In
-    </button>
-    <button class="btn white-btn" id="registerBtn" routerLink="/auth/register">
-      Sign Up
-    </button>
-  </div>
-</nav>
-
-<hr />
+</div>

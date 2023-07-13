@@ -1,0 +1,7 @@
+.bg-body {
+  background: url("../images/copy-space-italian-food-ingredients.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+}
