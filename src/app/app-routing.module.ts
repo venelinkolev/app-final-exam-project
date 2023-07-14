@@ -3,6 +3,13 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './feature/pages/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { CatalogComponent } from './feature/pages/catalog/catalog.component';
+import { NewRecipeComponent } from './feature/pages/new-recipe/new-recipe.component';
+import { MyRecipeComponent } from './feature/pages/my-recipe/my-recipe.component';
+import { SearchComponent } from './feature/pages/search/search.component';
+import { DetailsComponent } from './feature/pages/details/details.component';
+import { RecipeComponent } from './feature/pages/recipe/recipe.component';
+import { NotFoundPageComponent } from './feature/pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
@@ -14,6 +21,41 @@ const routes: Routes = [
     path: 'home',
     title: 'Home',
     component: HomeComponent,
+  },
+  {
+    path: 'catalog',
+    title: 'Catalog',
+    component: CatalogComponent,
+  },
+  {
+    path: 'recipes',
+    children: [
+      {
+        path: 'new-recipe',
+        title: 'New Recipe',
+        component: NewRecipeComponent,
+      },
+      {
+        path: 'my-recipes',
+        title: 'My Recipes',
+        component: MyRecipeComponent,
+      },
+      {
+        path: ':idRecipe',
+        title: 'Recipe',
+        component: RecipeComponent,
+      },
+      {
+        path: ':idRecipe/details',
+        title: 'Details',
+        component: DetailsComponent,
+      },
+    ],
+  },
+  {
+    path: 'search',
+    title: 'Search',
+    component: SearchComponent,
   },
   {
     path: 'auth',
@@ -29,6 +71,10 @@ const routes: Routes = [
         component: RegisterComponent,
       },
     ],
+  },
+  {
+    path: '**',
+    component: NotFoundPageComponent,
   },
 ];
 
