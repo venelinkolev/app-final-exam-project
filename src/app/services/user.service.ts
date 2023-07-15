@@ -21,7 +21,7 @@ export class UserService {
     const headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
     });
-    return this.httpClient.post<IUser>(`${this.url}user/.json`, body, {
+    return this.httpClient.post<IUser>(`${this.url}/register`, body, {
       withCredentials: true,
       headers: headers,
     });

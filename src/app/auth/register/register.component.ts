@@ -35,13 +35,12 @@ export class RegisterComponent implements OnInit {
     const { firstName, lastName, email, password, rePassword } =
       this.registerFormGroup.value;
 
-    const _id =
-      new Date().getTime().toString(36) + Math.random().toString(36).slice(2);
+    // const _id =
+    //   new Date().getTime().toString(36) + Math.random().toString(36).slice(2);
 
-    console.log(this.registerFormGroup, _id);
+    console.log(this.registerFormGroup);
 
     const body: IUser = {
-      _id,
       firstName,
       lastName,
       email,
