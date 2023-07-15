@@ -9,18 +9,18 @@
         >
         <header>Login</header>
       </div>
-
+      <form [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()">
       <div class="input-box p-1">
-        <input type="text" class="input-field" placeholder="Email" />
+        <input type="text" formControlName="email" class="input-field" placeholder="Email" />
         <i class="bx bx-envelope"></i>
       </div>
       <div class="input-box p-1">
-        <input type="password" class="input-field" placeholder="Password" />
+        <input type="password" formControlName="password" class="input-field" placeholder="Password" />
         <i class="bx bx-lock-alt"></i>
       </div>
 
       <div class="input-box p-1">
-        <input type="submit" class="submit" value="Login" />
+        <input [disabled]="loginFormGroup.invalid" type="submit" class="submit" value="Login" />
       </div>
       <!-- <div class="two-col">
         <div class="one">
@@ -31,6 +31,7 @@
           <label><a href="#">Terms & conditions</a></label>
         </div>
       </div> -->
+    </form>
     </div>
     <div class="col-lg-2"></div>
   </div>

@@ -34,7 +34,8 @@ export class RegisterComponent implements OnInit {
   handleRegister(): void {
     const { firstName, lastName, email, password, rePassword } =
       this.registerFormGroup.value;
-
+      
+    // random id generator
     // const _id =
     //   new Date().getTime().toString(36) + Math.random().toString(36).slice(2);
 
