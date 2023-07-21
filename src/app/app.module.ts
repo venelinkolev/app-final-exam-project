@@ -8,19 +8,18 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './feature/pages/home/home.component';
 import { AuthModule } from './auth/auth.module';
-import { NewRecipeComponent } from './feature/pages/new-recipe/new-recipe.component';
 import { MyRecipeComponent } from './feature/pages/my-recipe/my-recipe.component';
 import { SearchComponent } from './feature/pages/search/search.component';
 import { NotFoundPageComponent } from './feature/pages/not-found-page/not-found-page.component';
 import { CatalogComponent } from './feature/pages/catalog/catalog.component';
 import { RecipeComponent } from './feature/pages/recipe/recipe.component';
 import { DetailsComponent } from './feature/pages/details/details.component';
+import { PageModule } from './feature/pages/page.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NewRecipeComponent,
     MyRecipeComponent,
     SearchComponent,
     NotFoundPageComponent,
@@ -34,6 +33,7 @@ import { DetailsComponent } from './feature/pages/details/details.component';
     CoreModule,
     HttpClientModule,
     AppRoutingModule,
+    PageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -10,19 +10,34 @@
         <header>Login</header>
       </div>
       <form [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()">
-      <div class="input-box p-1">
-        <input type="text" formControlName="email" class="input-field" placeholder="Email" />
-        <i class="bx bx-envelope"></i>
-      </div>
-      <div class="input-box p-1">
-        <input type="password" formControlName="password" class="input-field" placeholder="Password" />
-        <i class="bx bx-lock-alt"></i>
-      </div>
+        <div class="input-box p-1">
+          <input
+            type="text"
+            formControlName="email"
+            class="input-field"
+            placeholder="Email"
+          />
+          <i class="bx bx-envelope"></i>
+        </div>
+        <div class="input-box p-1">
+          <input
+            type="password"
+            formControlName="password"
+            class="input-field"
+            placeholder="Password"
+          />
+          <i class="bx bx-lock-alt"></i>
+        </div>
 
-      <div class="input-box p-1">
-        <input [disabled]="loginFormGroup.invalid" type="submit" class="submit" value="Login" />
-      </div>
-      <!-- <div class="two-col">
+        <div class="input-box p-1">
+          <input
+            [disabled]="loginFormGroup.invalid"
+            type="submit"
+            class="submit"
+            value="Login"
+          />
+        </div>
+        <!-- <div class="two-col">
         <div class="one">
           <input type="checkbox" id="register-check" />
           <label for="register-check"> Remember Me</label>
@@ -31,7 +46,7 @@
           <label><a href="#">Terms & conditions</a></label>
         </div>
       </div> -->
-    </form>
+      </form>
     </div>
     <div class="col-lg-2"></div>
   </div>

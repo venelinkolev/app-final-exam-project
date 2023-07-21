@@ -43,7 +43,7 @@
 }
 .two label a {
   text-decoration: none;
-  color: #fff;
+  color: #4c4c4c;
 }
 .two label a:hover {
   text-decoration: underline;
@@ -72,7 +72,7 @@
 .input-field {
   font-size: 15px;
   background: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  color: #4c4c4c;
   height: 50px;
   width: 100%;
   padding: 0 10px 0 45px;
