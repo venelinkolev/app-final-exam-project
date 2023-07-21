@@ -1,7 +1,7 @@
 <div class="container text-center">
   <div class="row justify-content-md-center p-2">
     <!-- <div class="col col-md-1">1 of 3</div> -->
-    <div class="col-lg-auto rounded-3 bg-dark p-2 text-white bg-opacity-25">
+    <div class="col-md-auto rounded-3 bg-dark p-2 text-white bg-opacity-25">
       <div class="row justify-content-md-center" *ngIf="myRecipes">
         <!-- <div *ngIf="myRecipes"> -->
         <div class="col p-2" *ngFor="let recipe of myRecipes">
@@ -15,7 +15,7 @@
           </div>
         </div>
         <!-- </div> -->
-        <div *ngIf="!myRecipes">Loading...</div>
+        <div *ngIf="myRecipes.length === 0">Loading...</div>
       </div>
     </div>
 
