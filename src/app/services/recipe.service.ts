@@ -28,7 +28,11 @@ export class RecipeService {
     );
   }
 
-  getAllRecipes$() {}
+  getAllRecipes$(): Observable<IRecipe[]> {
+    return this.http.get<IRecipe[]>(`${environment.url}/recipes`, {
+      withCredentials: true,
+    });
+  }
 
   getRecipeById$() {}
 }

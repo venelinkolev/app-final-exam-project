@@ -17,16 +17,7 @@ import { DetailsComponent } from './feature/pages/details/details.component';
 import { PageModule } from './feature/pages/page.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    MyRecipeComponent,
-    SearchComponent,
-    NotFoundPageComponent,
-    CatalogComponent,
-    RecipeComponent,
-    DetailsComponent,
-  ],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     AuthModule,
