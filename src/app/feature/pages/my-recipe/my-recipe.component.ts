@@ -8,7 +8,7 @@ import { IRecipe } from 'src/app/types/recipe';
   styleUrls: ['./my-recipe.component.css'],
 })
 export class MyRecipeComponent implements OnInit {
-  myRecipes: IRecipe[] = [];
+  myRecipes!: IRecipe[];
 
   constructor(private recipeService: RecipeService) {}
 

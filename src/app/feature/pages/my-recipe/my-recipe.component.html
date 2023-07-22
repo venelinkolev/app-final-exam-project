@@ -6,17 +6,24 @@
         <!-- <div *ngIf="myRecipes"> -->
         <div class="col p-2" *ngFor="let recipe of myRecipes">
           <div class="card recipe">
-            <img src="{{ recipe.imageUrl }}" class="card-img-top" alt="Image" />
+            <img
+              src="{{ recipe.imageUrl }}"
+              class="card-img-top imageHeight"
+              alt="Image"
+            />
             <div class="card-body">
               <h5 class="card-title text-white">{{ recipe.recipeName }}</h5>
-              <p class="text-dark">{{ recipe.ingredients }}</p>
+              <p class="text-dark">
+                {{ recipe.ingredients | slice : 0 : 25 }}...
+              </p>
               <a href="#" class="btn btn-dark">Details</a>
             </div>
           </div>
         </div>
         <!-- </div> -->
-        <div *ngIf="myRecipes.length === 0">Loading...</div>
+        <div *ngIf="myRecipes.length === 0">No Recipes!</div>
       </div>
+      <div *ngIf="!myRecipes">Loading...</div>
     </div>
 
     <!-- <div class="col col-md-1">3 of 3</div> -->
