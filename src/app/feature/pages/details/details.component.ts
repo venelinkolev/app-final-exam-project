@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IRecipe } from 'src/app/types/recipe';
 
 @Component({
   selector: 'app-details',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
+  @Input() dayRecipe!: IRecipe;
 
 }
