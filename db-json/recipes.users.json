@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "64b29fa4ab8cee263487ad50"
+  },
+  "themes": [],
+  "posts": [],
+  "firstName": "Venelin",
+  "lastName": "Kolev",
+  "email": "venelinkolev@abv.bg",
+  "password": "$2b$05$iX/U6b1GxAYDVS.uzBd/SuRQCqi11tONVCQAS6DDvRSZUVKW14p86",
+  "created_at": {
+    "$date": "2023-07-15T13:31:16.046Z"
+  },
+  "updatedAt": {
+    "$date": "2023-07-15T13:31:16.046Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64bbc7c8a49a130e7c94978e"
+  },
+  "themes": [],
+  "posts": [],
+  "firstName": "Mimi",
+  "lastName": "Mimova",
+  "email": "mimi@abv.bg",
+  "password": "$2b$05$Q.k2WNzVNUdWaE77pA8xiu8DhYnLC7qbRDUYuBKSB1nupgYGWeLBS",
+  "created_at": {
+    "$date": "2023-07-22T12:12:56.431Z"
+  },
+  "updatedAt": {
+    "$date": "2023-07-22T12:12:56.431Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64bbcd35a49a130e7c949792"
+  },
+  "themes": [],
+  "posts": [],
+  "firstName": "Pesho",
+  "lastName": "Peshev",
+  "email": "pesho@abv.bg",
+  "password": "$2b$05$Nd9ox3JtPI21lhJ0XtoLOui1ezR0jkOOebwJrRG/VA1K9LrisPIJ.",
+  "created_at": {
+    "$date": "2023-07-22T12:36:05.016Z"
+  },
+  "updatedAt": {
+    "$date": "2023-07-22T12:36:05.016Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64be49ad2d37cd0568b391cc"
+  },
+  "themes": [],
+  "posts": [],
+  "firstName": "Atanaska",
+  "lastName": "Koleva",
+  "email": "atanaska@abv.bg",
+  "password": "$2b$05$Jc266RWy3vFkyt7ywr733.tVjdh.OX8NHsOB23h8Zo5CD76u1GnbK",
+  "created_at": {
+    "$date": "2023-07-24T09:51:41.963Z"
+  },
+  "updatedAt": {
+    "$date": "2023-07-24T09:51:41.963Z"
+  },
+  "__v": 0
+}]
