@@ -9,25 +9,23 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./new-recipe.component.css'],
 })
 export class NewRecipeComponent implements OnInit {
-  constructor(private router: Router, private recipeService: RecipeService) {}
+  // constructor(private router: Router, private recipeService: RecipeService) {}
 
-  ngOnInit(): void {
-    // throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void {}
 
-  createNewRecipe(newRecipeForm: NgForm): void {
-    console.log(newRecipeForm.value);
+  // createNewRecipe(newRecipeForm: NgForm): void {
+  //   console.log(newRecipeForm.value);
 
-    this.recipeService.createNewRecipe$(newRecipeForm.value).subscribe({
-      next: (recipe) => {
-        console.log(recipe);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+  //   this.recipeService.createNewRecipe$(newRecipeForm.value).subscribe({
+  //     next: (recipe) => {
+  //       console.log(recipe);
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+  //     },
+  //   });
 
-    newRecipeForm.resetForm();
-    this.router.navigate(['/recipes/my-recipes']);
-  }
+  //   newRecipeForm.resetForm();
+  //   this.router.navigate(['/recipes/my-recipes']);
+  // }
 }

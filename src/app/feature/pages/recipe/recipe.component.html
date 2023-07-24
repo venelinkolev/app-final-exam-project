@@ -1,9 +1,19 @@
 <div class="col p-2">
   <div class="card recipe">
-    <img src="{{ recipe.imageUrl }}" class="card-img-top imageHeight" alt="Image" />
+    <img
+      src="{{ recipe.imageUrl }}"
+      class="card-img-top imageHeight"
+      alt="Image"
+    />
     <div class="card-body">
-      <h5 class="card-title text-white"><a href="#" class="btn btn-dark">{{ recipe.recipeName }}</a></h5>
-      <p>Total time {{recipe.totalTime}} min.</p>
+      <h5 class="card-title text-white">
+        <a
+          routerLink="/recipes/{{ recipe._id }}/details"
+          class="btn btn-dark"
+          >{{ recipe.recipeName }}</a
+        >
+      </h5>
+      <p>Total time {{ recipe.totalTime }} min.</p>
       <!-- <p class="text-dark">{{ recipe.ingredients | slice:0:25 }}...</p> -->
       <!-- <a href="#" class="btn btn-dark">Details</a> -->
     </div>

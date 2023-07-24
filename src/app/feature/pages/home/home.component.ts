@@ -5,11 +5,12 @@ import { IRecipe } from 'src/app/types/recipe';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   myRecipes!: IRecipe[];
   randomRecipe!: IRecipe[];
+  isDetailsPage: boolean = false;
 
   constructor(private recipeService: RecipeService) {}
 
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit{
       console.log(this.randomRecipe);
       this.myRecipes = recipes.slice(0, 3);
       console.log(recipes);
+      this.isDetailsPage = false;
     });
   }
-
 }

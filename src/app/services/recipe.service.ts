@@ -34,5 +34,7 @@ export class RecipeService {
     });
   }
 
-  getRecipeById$() {}
+  getRecipe$(id: string): Observable<IRecipe[]> {
+    return this.http.get<IRecipe[]>(`${environment.url}/recipes/${id}/details`);
+  }
 }

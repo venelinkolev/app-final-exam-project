@@ -9,17 +9,17 @@ function getThemes(req, res, next) {
     .catch(next);
 }
 
-function getTheme(req, res, next) {
+function getRecipe(req, res, next) {
   const { themeId } = req.params;
-
+  //console.log(themeId);
   recipeModel
-    .findById(themeId)
-    .populate({
-      path: "posts",
-      populate: {
-        path: "userId",
-      },
-    })
+    .find({ _id: themeId })
+    // .populate({
+    //   path: "posts",
+    //   populate: {
+    //     path: "userId",
+    //   },
+    // })
     .then((theme) => res.json(theme))
     .catch(next);
 }
@@ -125,6 +125,6 @@ async function buyGame(gameId, ownewId) {
 module.exports = {
   getThemes,
   createTheme,
-  getTheme,
+  getRecipe,
   subscribe,
 };
