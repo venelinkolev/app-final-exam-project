@@ -11,6 +11,7 @@ import { RecipeComponent } from './feature/pages/recipe/recipe.component';
 import { NotFoundPageComponent } from './feature/pages/not-found-page/not-found-page.component';
 import { DetailsPageComponent } from './feature/pages/details-page/details-page.component';
 import { EditComponent } from './feature/pages/edit/edit.component';
+import { DeleteComponent } from './feature/pages/delete/delete.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,11 @@ const routes: Routes = [
         path: ':idRecipe/details',
         title: 'Details',
         component: DetailsPageComponent,
+      },
+      {
+        path: ':idRecipe/delete',
+        title: 'Delete Page',
+        component: DeleteComponent,
       },
     ],
   },

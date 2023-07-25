@@ -45,4 +45,11 @@ export class RecipeService {
       { withCredentials: true }
     );
   }
+
+  deleteRecipe$(id: string) {
+    console.log('delete', id);
+    return this.http.delete(`${environment.url}/recipes/${id}/delete`, {
+      withCredentials: true,
+    });
+  }
 }

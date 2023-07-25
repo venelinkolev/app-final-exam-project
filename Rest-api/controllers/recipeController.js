@@ -24,6 +24,17 @@ function getRecipe(req, res, next) {
     .catch(next);
 }
 
+function deleteRecipe(req, res, next) {
+  const { themeId } = req.params;
+  //console.log(themeId);
+  recipeModel
+    .findByIdAndDelete(themeId)
+    .then(() => {
+      console.log("Delete");
+    })
+    .catch(next);
+}
+
 function updateRecipe(req, res, next) {
   const { themeId } = req.params;
 
@@ -35,8 +46,6 @@ function updateRecipe(req, res, next) {
     cookTime,
     totalTime,
     servings,
-    //themeName,
-    //postText
   } = req.body;
 
   recipeModel
@@ -48,8 +57,6 @@ function updateRecipe(req, res, next) {
       cookTime,
       totalTime,
       servings,
-      //themeName,
-      //postText
     })
     .catch(next);
 }
@@ -158,4 +165,5 @@ module.exports = {
   getRecipe,
   subscribe,
   updateRecipe,
+  deleteRecipe,
 };

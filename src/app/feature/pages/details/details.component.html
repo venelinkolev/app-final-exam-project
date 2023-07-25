@@ -47,6 +47,13 @@
           class="btn btn-dark m-2"
           >Edit</a
         >
+        <!-- (click)="deleteRecipe(detailsRecipe._id)" routerLink="/recipes/{{ detailsRecipe._id }}/delete" -->
+        <a
+          *ngIf="isDetailsPage"
+          (click)="deleteRecipe(detailsRecipe._id)"
+          class="btn btn-dark m-2"
+          >Delete</a
+        >
       </div>
     </div>
   </div>

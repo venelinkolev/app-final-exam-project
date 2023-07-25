@@ -9,6 +9,7 @@ router.get("/", recipeController.getThemes);
 router.post("/new-recipe", auth(), recipeController.createTheme);
 
 router.get("/:themeId/details", recipeController.getRecipe);
+router.delete("/:themeId/delete", auth(), recipeController.deleteRecipe);
 router.get("/:themeId/edit", recipeController.getRecipe);
 router.post("/:themeId/edit", recipeController.updateRecipe);
 router.post("/:themeId", auth(), postController.createPost);

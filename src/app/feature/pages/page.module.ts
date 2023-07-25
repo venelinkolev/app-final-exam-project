@@ -12,6 +12,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { EditComponent } from './edit/edit.component';
+import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { EditComponent } from './edit/edit.component';
     DetailsPageComponent,
     RecipeFormComponent,
     EditComponent,
+    DeleteComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   exports: [],

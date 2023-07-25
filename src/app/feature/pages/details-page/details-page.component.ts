@@ -13,6 +13,8 @@ export class DetailsPageComponent implements OnInit {
 
   isDetailsPage: boolean = false;
 
+  //idRecipe!: string;
+
   constructor(
     private recipeService: RecipeService,
     private activatedRoute: ActivatedRoute
@@ -21,10 +23,12 @@ export class DetailsPageComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       const id = params['idRecipe'];
+      //this.idRecipe = id;
 
       this.recipeService.getRecipe$(id).subscribe((recipe) => {
         this.currentDetailsRecipe = recipe;
         this.isDetailsPage = true;
+
         console.log(recipe);
       });
     });
