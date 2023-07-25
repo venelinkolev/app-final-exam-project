@@ -20,7 +20,12 @@ export class HomeComponent implements OnInit {
       console.log(randomNumber);
       this.randomRecipe = recipes.splice(randomNumber - 1, 1);
       console.log(this.randomRecipe);
-      this.myRecipes = recipes.slice(0, 3);
+      if (randomNumber + 3 > recipes.length) {
+        let newRandomNumber = randomNumber - 3;
+        this.myRecipes = recipes.splice(newRandomNumber, 3);
+      } else {
+        this.myRecipes = recipes.splice(randomNumber, 3);
+      }
       console.log(recipes);
       this.isDetailsPage = false;
     });

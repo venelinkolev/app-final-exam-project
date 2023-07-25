@@ -24,6 +24,36 @@ function getRecipe(req, res, next) {
     .catch(next);
 }
 
+function updateRecipe(req, res, next) {
+  const { themeId } = req.params;
+
+  const {
+    recipeName,
+    imageUrl,
+    ingredients,
+    prepTime,
+    cookTime,
+    totalTime,
+    servings,
+    //themeName,
+    //postText
+  } = req.body;
+
+  recipeModel
+    .findByIdAndUpdate(themeId, {
+      recipeName,
+      imageUrl,
+      ingredients,
+      prepTime,
+      cookTime,
+      totalTime,
+      servings,
+      //themeName,
+      //postText
+    })
+    .catch(next);
+}
+
 function createTheme(req, res, next) {
   const {
     recipeName,
@@ -127,4 +157,5 @@ module.exports = {
   createTheme,
   getRecipe,
   subscribe,
+  updateRecipe,
 };

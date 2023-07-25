@@ -37,4 +37,12 @@ export class RecipeService {
   getRecipe$(id: string): Observable<IRecipe[]> {
     return this.http.get<IRecipe[]>(`${environment.url}/recipes/${id}/details`);
   }
+
+  updateRecipe$(id: string, body: IRecipe): Observable<IRecipe[]> {
+    return this.http.post<IRecipe[]>(
+      `${environment.url}/recipes/${id}/edit`,
+      body,
+      { withCredentials: true }
+    );
+  }
 }

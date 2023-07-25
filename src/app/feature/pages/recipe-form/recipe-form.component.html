@@ -98,95 +98,95 @@
 </ng-container>
 
 <ng-container *ngIf="editRecipeMode">
-  <div *ngFor="let recipe of currentRecipe">
-    <form #newRecipeForm="ngForm" (ngSubmit)="createNewRecipe(newRecipeForm)">
+  <!-- <div *ngFor="let recipe of currentRecipe"> -->
+  <form #editRecipeForm="ngForm" (ngSubmit)="editRecipe(editRecipeForm)">
+    <div class="input-box p-1">
+      <input
+        ngModel
+        name="recipeName"
+        #recipeName="ngModel"
+        type="text"
+        class="input-field"
+        placeholder="Recipe Name"
+      />
+      <i class="bx bx-envelope"></i>
+    </div>
+    <!-- <p>{{ recipe.recipeName }}</p> -->
+    <div class="input-box p-1">
+      <input
+        type="text"
+        name="imageUrl"
+        #imageUrl="ngModel"
+        ngModel
+        class="input-field"
+        placeholder="Image Url"
+      />
+      <i class="bx bx-envelope"></i>
+    </div>
+    <div class="input-box p-1">
+      <textarea
+        type="text"
+        name="ingredients"
+        #ingredients="ngModel"
+        ngModel
+        class="textarea"
+        placeholder="Ingredients"
+      ></textarea>
+      <i class="bx bx-envelope"></i>
+    </div>
+    <div class="two-forms">
       <div class="input-box p-1">
         <input
-          ngModel
-          name="recipeName"
-          #recipeName="ngModel"
           type="text"
+          name="prepTime"
+          #prepTime="ngModel"
+          ngModel
           class="input-field"
-          [value]="recipe.recipeName"
+          placeholder="Prep Time(min.)"
         />
-        <i class="bx bx-envelope"></i>
+        <i class="bx bx-user"></i>
       </div>
-      <!-- <p>{{ recipe.recipeName }}</p> -->
       <div class="input-box p-1">
         <input
           type="text"
-          name="imageUrl"
-          #imageUrl="ngModel"
+          name="cookTime"
+          #cookTime="ngModel"
           ngModel
           class="input-field"
-          placeholder="Image Url"
+          placeholder="Cook Time(min.)"
         />
-        <i class="bx bx-envelope"></i>
+        <i class="bx bx-user"></i>
+      </div>
+    </div>
+    <div class="two-forms">
+      <div class="input-box p-1">
+        <input
+          type="text"
+          name="totalTime"
+          #totalTime="ngModel"
+          ngModel
+          class="input-field"
+          placeholder="Total Time(min.)"
+        />
+        <i class="bx bx-user"></i>
       </div>
       <div class="input-box p-1">
-        <textarea
+        <input
           type="text"
-          name="ingredients"
-          #ingredients="ngModel"
+          name="servings"
+          #servings="ngModel"
           ngModel
-          class="textarea"
-          placeholder="Ingredients"
-        ></textarea>
-        <i class="bx bx-envelope"></i>
+          class="input-field"
+          placeholder="Servings"
+        />
+        <i class="bx bx-user"></i>
       </div>
-      <div class="two-forms">
-        <div class="input-box p-1">
-          <input
-            type="text"
-            name="prepTime"
-            #prepTime="ngModel"
-            ngModel
-            class="input-field"
-            placeholder="Prep Time(min.)"
-          />
-          <i class="bx bx-user"></i>
-        </div>
-        <div class="input-box p-1">
-          <input
-            type="text"
-            name="cookTime"
-            #cookTime="ngModel"
-            ngModel
-            class="input-field"
-            placeholder="Cook Time(min.)"
-          />
-          <i class="bx bx-user"></i>
-        </div>
-      </div>
-      <div class="two-forms">
-        <div class="input-box p-1">
-          <input
-            type="text"
-            name="totalTime"
-            #totalTime="ngModel"
-            ngModel
-            class="input-field"
-            placeholder="Total Time(min.)"
-          />
-          <i class="bx bx-user"></i>
-        </div>
-        <div class="input-box p-1">
-          <input
-            type="text"
-            name="servings"
-            #servings="ngModel"
-            ngModel
-            class="input-field"
-            placeholder="Servings"
-          />
-          <i class="bx bx-user"></i>
-        </div>
-      </div>
+    </div>
 
-      <div class="input-box p-1">
-        <input type="submit" class="submit" value="Save Recipe" />
-      </div>
-      <!-- <div class="two-col">
+    <div class="input-box p-1">
+      <input type="submit" class="submit" value="Save Recipe" />
+    </div>
+    <!-- <div class="two-col">
               <div class="one">
                 <input type="checkbox" id="register-check" />
                 <label for="register-check"> Remember Me</label>
@@ -195,6 +195,6 @@
                 <label><a href="#">Terms & conditions</a></label>
               </div>
             </div> -->
-    </form>
-  </div>
+  </form>
+  <!-- </div> -->
 </ng-container>

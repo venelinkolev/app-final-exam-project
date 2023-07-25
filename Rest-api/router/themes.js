@@ -10,6 +10,7 @@ router.post("/new-recipe", auth(), recipeController.createTheme);
 
 router.get("/:themeId/details", recipeController.getRecipe);
 router.get("/:themeId/edit", recipeController.getRecipe);
+router.post("/:themeId/edit", recipeController.updateRecipe);
 router.post("/:themeId", auth(), postController.createPost);
 router.put("/:themeId", auth(), recipeController.subscribe);
 router.put("/:themeId/posts/:postId", auth(), postController.editPost);
