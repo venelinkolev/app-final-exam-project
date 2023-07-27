@@ -7,11 +7,9 @@ import { CatalogComponent } from './feature/pages/catalog/catalog.component';
 import { NewRecipeComponent } from './feature/pages/new-recipe/new-recipe.component';
 import { MyRecipeComponent } from './feature/pages/my-recipe/my-recipe.component';
 import { SearchComponent } from './feature/pages/search/search.component';
-import { RecipeComponent } from './feature/pages/recipe/recipe.component';
 import { NotFoundPageComponent } from './feature/pages/not-found-page/not-found-page.component';
 import { DetailsPageComponent } from './feature/pages/details-page/details-page.component';
 import { EditComponent } from './feature/pages/edit/edit.component';
-import { DeleteComponent } from './feature/pages/delete/delete.component';
 
 const routes: Routes = [
   {
@@ -51,11 +49,6 @@ const routes: Routes = [
         path: ':idRecipe/details',
         title: 'Details',
         component: DetailsPageComponent,
-      },
-      {
-        path: ':idRecipe/delete',
-        title: 'Delete Page',
-        component: DeleteComponent,
       },
     ],
   },

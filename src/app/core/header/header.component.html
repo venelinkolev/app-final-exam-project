@@ -23,28 +23,33 @@
               <a class="nav-link text-white" routerLink="/catalog">Catalog</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/search">Search</a>
+            </li>
+            <li class="nav-item" *ngIf="isLogin$ | async">
               <a class="nav-link text-white" routerLink="/recipes/new-recipe"
                 >Add Recipe</a
               >
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="isLogin$ | async">
               <a class="nav-link text-white" routerLink="/recipes/my-recipes"
                 >My Recipes</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" routerLink="/search">Search</a>
+            <li class="nav-item" *ngIf="isLogin$ | async">
+              <a
+                class="nav-link text-white"
+                href="javascript:void(0);"
+                (click)="logout()"
+                >Logout</a
+              >
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="!(isLogin$ | async)">
               <a class="nav-link text-white" routerLink="/auth/login">Login</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="!(isLogin$ | async)">
               <a class="nav-link text-white" routerLink="/auth/register"
                 >Register</a
               >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white">Logout</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link disabled">Disabled</a>
@@ -53,6 +58,13 @@
         </div>
         <!-- Navbar content -->
       </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md p-2">
+      <div class="alert alert-danger" role="alert">
+        A simple danger alert—check it out!
+      </div>
     </div>
   </div>
 </div>

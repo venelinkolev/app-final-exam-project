@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { IRecipe } from '../types/recipe';
 import { environment } from 'src/environments/environment.development';
 
@@ -32,6 +32,13 @@ export class RecipeService {
     return this.http.get<IRecipe[]>(`${environment.url}/recipes`, {
       withCredentials: true,
     });
+  }
+
+  getRecipesByUserId$(): Observable<IRecipe[]> {
+    return this.http.get<IRecipe[]>(`${environment.url}/recipes`, {
+      withCredentials: true,
+    });
+    // .pipe(map((recipe) => recipe.filter((r) => r.userId == user)));
   }
 
   getRecipe$(id: string): Observable<IRecipe[]> {

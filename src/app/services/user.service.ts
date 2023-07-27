@@ -1,23 +1,31 @@
 import { Injectable } from '@angular/core';
-import { IUser, LUser } from '../types/user';
+import { IUser, LUser, User } from '../types/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, EMPTY, Observable, catchError, map, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  user: IUser | undefined;
   url = environment.url;
 
-  get isLogged() {
-    return !!this.user;
-  }
+  private _user = new BehaviorSubject<IUser>(undefined!);
+
+  user$ = this._user.asObservable();
+  isLogin$ = this.user$.pipe(map((user) => !!user));
 
   constructor(private httpClient: HttpClient) {}
 
-  register$(body: IUser): Observable<IUser> {
+  logout$(): Observable<void> {
+    return this.httpClient.post<void>(
+      `${this.url}/logout`,
+      {},
+      { withCredentials: true }
+    );
+  }
+
+  register$(body: User): Observable<IUser> {
     // const headers = new HttpHeaders({
     //   'Access-Control-Allow-Origin': '*',
     // });
@@ -27,7 +35,28 @@ export class UserService {
   }
 
   login$(body: LUser): Observable<LUser> {
-    return this.httpClient.post<LUser>(`${this.url}/login`, body, { withCredentials: true });
+    return this.httpClient.post<LUser>(`${this.url}/login`, body, {
+      withCredentials: true,
+    });
+  }
+
+  authUser(): Observable<IUser> {
+    return this.httpClient
+      .get<IUser>(`${this.url}/users/profile`, { withCredentials: true })
+      .pipe(
+        tap((currentUser) => this.loginHandled(currentUser)),
+        catchError((err) => {
+          return EMPTY;
+        })
+      );
+  }
+
+  loginHandled(loggingUser: IUser) {
+    this._user.next(loggingUser);
+  }
+
+  logoutHandled(): void {
+    this._user.next(undefined!);
   }
 
   // getUser$(): Observable<IUser> {
