@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Provider } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
   HttpResponse,
+  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { UserService } from '../services/user.service';
@@ -24,6 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
           if (event.url?.endsWith('login') || event.url?.endsWith('register')) {
             console.log('login/register');
             //const user: IUser = event.body;
+            console.log(event.body);
             this.userServise.loginHandled(event.body as IUser);
           } else if (event.url?.endsWith('logout')) {
             console.log('logout');
@@ -34,3 +36,8 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
 }
+export const authInterceptorProvider: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor,
+};

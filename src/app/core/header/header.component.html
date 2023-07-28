@@ -60,10 +60,17 @@
       </nav>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="!!message && messageErrorType">
     <div class="col-md p-2">
       <div class="alert alert-danger" role="alert">
-        A simple danger alert—check it out!
+        {{ message }}
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="!!message && !messageErrorType">
+    <div class="col-md p-2">
+      <div class="alert alert-success" role="alert">
+        {{ message }}
       </div>
     </div>
   </div>

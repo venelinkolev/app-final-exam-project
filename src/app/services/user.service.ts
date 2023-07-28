@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IUser, LUser, User } from '../types/user';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, EMPTY, Observable, catchError, map, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +11,10 @@ import { environment } from 'src/environments/environment.development';
 export class UserService {
   url = environment.url;
 
-  private _user = new BehaviorSubject<IUser>(undefined!);
+  private _user = new BehaviorSubject<IUser | undefined>(undefined);
 
-  user$ = this._user.asObservable();
-  isLogin$ = this.user$.pipe(map((user) => !!user));
+  user$: Observable<IUser | undefined> = this._user.asObservable();
+  isLogin$: Observable<boolean> = this.user$.pipe(map((user) => !!user));
 
   constructor(private httpClient: HttpClient) {}
 
@@ -45,9 +46,7 @@ export class UserService {
       .get<IUser>(`${this.url}/users/profile`, { withCredentials: true })
       .pipe(
         tap((currentUser) => this.loginHandled(currentUser)),
-        catchError((err) => {
-          return EMPTY;
-        })
+        catchError(() => EMPTY)
       );
   }
 

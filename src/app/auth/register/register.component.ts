@@ -6,7 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ErrorMessageService } from 'src/app/services/error-message.service';
 import { UserService } from 'src/app/services/user.service';
+import { MessageType } from 'src/app/types/message';
 import { IUser, User } from 'src/app/types/user';
 
 @Component({
@@ -26,7 +28,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private userService: UserService,
     private formBilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private errorMessage: ErrorMessageService
   ) {}
 
   ngOnInit(): void {}
@@ -49,7 +52,12 @@ export class RegisterComponent implements OnInit {
     };
 
     this.userService.register$(body).subscribe(() => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/recipes/my-recipes']);
+
+      this.errorMessage.getErrorMessage({
+        message: 'Success',
+        type: MessageType.Success,
+      });
     });
     //his.registerFormGroup.reset();
   }

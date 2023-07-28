@@ -10,6 +10,7 @@ import { SearchComponent } from './feature/pages/search/search.component';
 import { NotFoundPageComponent } from './feature/pages/not-found-page/not-found-page.component';
 import { DetailsPageComponent } from './feature/pages/details-page/details-page.component';
 import { EditComponent } from './feature/pages/edit/edit.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -33,16 +34,19 @@ const routes: Routes = [
       {
         path: 'new-recipe',
         title: 'New Recipe',
+        canActivate: [AuthGuard],
         component: NewRecipeComponent,
       },
       {
         path: 'my-recipes',
         title: 'My Recipes',
+        canActivate: [AuthGuard],
         component: MyRecipeComponent,
       },
       {
         path: ':idRecipe/edit',
         title: 'Edit Recipe',
+        canActivate: [AuthGuard],
         component: EditComponent,
       },
       {
@@ -59,18 +63,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    children: [
-      {
-        path: 'login',
-        title: 'Login Form',
-        component: LoginComponent,
-      },
-      {
-        path: 'register',
-        title: 'Register Form',
-        component: RegisterComponent,
-      },
-    ],
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: '**',

@@ -9,25 +9,29 @@ import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 
 import { PageModule } from './feature/pages/page.module';
-import { AuthInterceptor } from './core/auth.interceptor';
+import {
+  AuthInterceptor,
+  authInterceptorProvider,
+} from './core/auth.interceptor';
 import { UserService } from './services/user.service';
+import { ErrorHandlerInterceptor } from './core/error-handler.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AuthModule,
     CoreModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     PageModule,
   ],
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   multi: true,
-    //   useClass: AuthInterceptor,
-    // },
+    authInterceptorProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: ErrorHandlerInterceptor,
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: (userService: UserService) => {
