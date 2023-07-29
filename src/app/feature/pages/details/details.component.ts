@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { UserService } from 'src/app/services/user.service';
 import { IRecipe } from 'src/app/types/recipe';
 
 @Component({
@@ -8,11 +10,21 @@ import { IRecipe } from 'src/app/types/recipe';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css'],
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit {
   @Input() detailsRecipe!: IRecipe;
   @Input() isDetailsPage!: boolean;
 
-  constructor(private recipeService: RecipeService, private router: Router) {}
+  userId$: Observable<string> = this.userService.userId$;
+
+  constructor(
+    private recipeService: RecipeService,
+    private router: Router,
+    private userService: UserService
+  ) {}
+
+  ngOnInit(): void {
+    console.log('userId', this.detailsRecipe.userId);
+  }
 
   deleteRecipe(id: string): void {
     console.log(id);

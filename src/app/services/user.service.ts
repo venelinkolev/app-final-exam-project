@@ -15,6 +15,14 @@ export class UserService {
 
   user$: Observable<IUser | undefined> = this._user.asObservable();
   isLogin$: Observable<boolean> = this.user$.pipe(map((user) => !!user));
+  userId$: Observable<string> = this.user$.pipe(
+    map((user) => {
+      if (!!user) {
+        return user._id;
+      }
+      return '';
+    })
+  );
 
   constructor(private httpClient: HttpClient) {}
 

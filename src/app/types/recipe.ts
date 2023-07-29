@@ -7,4 +7,5 @@ export interface IRecipe {
   cookTime: number;
   totalTime: number;
   servings: number;
+  userId: string;
 }

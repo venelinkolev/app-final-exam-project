@@ -4,7 +4,7 @@ const { newPost } = require("./postController");
 function getThemes(req, res, next) {
   recipeModel
     .find()
-    .populate("userId")
+    //.populate("userId")
     .then((themes) => res.json(themes))
     .catch(next);
 }
