@@ -17,12 +17,22 @@ import { IUser, User } from 'src/app/types/user';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  passwordFormControl = new FormControl('', [Validators.required]);
+
   registerFormGroup: FormGroup = this.formBilder.group({
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-    rePassword: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    lastName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    passwords: new FormGroup({
+      password: this.passwordFormControl,
+      rePassword: new FormControl('', [Validators.required]),
+    }),
   });
 
   constructor(

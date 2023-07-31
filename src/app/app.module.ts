@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
-import { AuthModule } from './auth/auth.module';
 
 import { PageModule } from './feature/pages/page.module';
 import {

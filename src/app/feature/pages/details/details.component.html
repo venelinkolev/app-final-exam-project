@@ -3,7 +3,7 @@
     <div class="card-default p-2">
       <img
         src="{{ detailsRecipe.imageUrl }}"
-        class="card-img-top"
+        class="card-img-top imageHeight"
         alt="Image"
       />
       <div class="p-3"></div>
@@ -29,8 +29,9 @@
             </tr>
           </tbody>
         </table>
-        <p class="text-dark p-2">
-          {{ detailsRecipe.ingredients }}
+        <hr />
+        <p class="text-dark" *ngFor="let ingredients of newLine()">
+          {{ ingredients }}
         </p>
         <a
           *ngIf="!isDetailsPage"

@@ -22,6 +22,10 @@ export class DetailsComponent implements OnInit {
     private userService: UserService
   ) {}
 
+  newLine(): string[] {
+    return this.detailsRecipe.ingredients.split('\n');
+  }
+
   ngOnInit(): void {
     console.log('userId', this.detailsRecipe.userId);
   }

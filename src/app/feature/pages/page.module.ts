@@ -12,6 +12,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { EditComponent } from './edit/edit.component';
+import { UtilModule } from 'src/app/util/util.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,13 @@ import { EditComponent } from './edit/edit.component';
     RecipeFormComponent,
     EditComponent,
   ],
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    UtilModule,
+  ],
   exports: [],
 })
 export class PageModule {}
