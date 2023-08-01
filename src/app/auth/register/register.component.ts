@@ -10,6 +10,7 @@ import { ErrorMessageService } from 'src/app/services/error-message.service';
 import { UserService } from 'src/app/services/user.service';
 import { MessageType } from 'src/app/types/message';
 import { IUser, User } from 'src/app/types/user';
+import { passwordCheck } from 'src/app/util/utilFunctions';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,10 @@ import { IUser, User } from 'src/app/types/user';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  passwordFormControl = new FormControl('', [Validators.required]);
+  passwordFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(5),
+  ]);
 
   registerFormGroup: FormGroup = this.formBilder.group({
     firstName: new FormControl('', [
@@ -29,11 +33,17 @@ export class RegisterComponent implements OnInit {
       Validators.minLength(2),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    passwords: new FormGroup({
+    passwordsGroup: new FormGroup({
       password: this.passwordFormControl,
-      rePassword: new FormControl('', [Validators.required]),
+      rePassword: new FormControl('', [
+        passwordCheck(this.passwordFormControl),
+      ]),
     }),
   });
+
+  get passwordsGroup(): FormGroup {
+    return this.registerFormGroup.controls['passwordsGroup'] as FormGroup;
+  }
 
   constructor(
     private userService: UserService,
@@ -45,7 +55,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   handleRegister(): void {
-    const { firstName, lastName, email, password, rePassword } =
+    const { firstName, lastName, email, passwordsGroup } =
       this.registerFormGroup.value;
 
     // random id generator
@@ -58,7 +68,7 @@ export class RegisterComponent implements OnInit {
       firstName,
       lastName,
       email,
-      password,
+      password: passwordsGroup.password,
     };
 
     this.userService.register$(body).subscribe(() => {

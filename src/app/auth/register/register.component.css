@@ -88,3 +88,13 @@
 ::-webkit-input-placeholder {
   color: #fff;
 }
+
+.error {
+  /* border-color: red;
+  border: 2px; */
+  color: red;
+  text-align: center;
+  background-color: rgba(245, 245, 245, 0.659);
+  border-radius: 15px;
+  padding: 3px;
+}

@@ -15,6 +15,7 @@
               class="input-field"
               placeholder="Firstname"
             />
+
             <i class="bx bx-user"></i>
           </div>
           <div class="input-box p-1">
@@ -27,6 +28,46 @@
             <i class="bx bx-user"></i>
           </div>
         </div>
+        <ng-container
+          *ngIf="
+            registerFormGroup.controls['firstName'].touched &&
+            registerFormGroup.controls['firstName'].invalid
+          "
+        >
+          <p
+            *ngIf="registerFormGroup.controls['firstName'].errors?.['required']"
+            class="error"
+          >
+            First Name is required!
+          </p>
+
+          <p
+            *ngIf="registerFormGroup.controls['firstName'].errors?.['minlength']"
+            class="error"
+          >
+            First Name must be at least 2 characters!
+          </p>
+        </ng-container>
+        <ng-container
+          *ngIf="
+            registerFormGroup.controls['lastName'].touched &&
+            registerFormGroup.controls['lastName'].invalid
+          "
+        >
+          <p
+            *ngIf="registerFormGroup.controls['lastName'].errors?.['required']"
+            class="error"
+          >
+            Last Name is required!
+          </p>
+
+          <p
+            *ngIf="registerFormGroup.controls['lastName'].errors?.['minlength']"
+            class="error"
+          >
+            Last Name must be at least 2 characters!
+          </p>
+        </ng-container>
         <div class="input-box p-1">
           <input
             type="text"
@@ -35,26 +76,80 @@
             placeholder="Email"
           />
           <i class="bx bx-envelope"></i>
+          <ng-container
+            *ngIf="
+              registerFormGroup.controls['email'].touched &&
+              registerFormGroup.controls['email'].invalid
+            "
+          >
+            <p
+              *ngIf="registerFormGroup.controls['email'].errors?.['required']"
+              class="error"
+            >
+              Email is required!
+            </p>
+
+            <p
+              *ngIf="registerFormGroup.controls['email'].errors?.['email']"
+              class="error"
+            >
+              Email is not valid!
+            </p>
+          </ng-container>
+        </div>
+        <div formGroupName="passwordsGroup">
+          <div class="input-box p-1">
+            <input
+              type="password"
+              formControlName="password"
+              class="input-field"
+              placeholder="Password"
+            />
+            <i class="bx bx-lock-alt"></i>
+            <ng-container
+              *ngIf="
+                passwordsGroup.controls['password'].touched &&
+                passwordsGroup.controls['password'].invalid
+              "
+            >
+              <p
+                *ngIf="passwordsGroup.controls['password'].errors?.['required']"
+                class="error"
+              >
+                Password is required!
+              </p>
+              <p
+                *ngIf="passwordsGroup.controls['password'].errors?.['minlength']"
+                class="error"
+              >
+                Password must be at least 5 characters!
+              </p>
+            </ng-container>
+          </div>
+          <div class="input-box p-1">
+            <input
+              type="password"
+              formControlName="rePassword"
+              class="input-field"
+              placeholder="Repeat Password"
+            />
+            <i class="bx bx-lock-alt"></i>
+          </div>
         </div>
         <div class="input-box p-1">
-          <input
-            type="password"
-            formControlName="password"
-            class="input-field"
-            placeholder="Password"
-          />
-          <i class="bx bx-lock-alt"></i>
-        </div>
-        <div class="input-box p-1">
-          <input
-            type="password"
-            formControlName="rePassword"
-            class="input-field"
-            placeholder="Repeat Password"
-          />
-          <i class="bx bx-lock-alt"></i>
-        </div>
-        <div class="input-box p-1">
+          <ng-container
+            *ngIf="
+              passwordsGroup.controls['rePassword'].touched &&
+              passwordsGroup.controls['rePassword'].invalid
+            "
+          >
+            <p
+              *ngIf="passwordsGroup.controls['rePassword'].errors?.['passwordNotMatch']"
+              class="error"
+            >
+              Repeat Password does not match password!
+            </p>
+          </ng-container>
           <input
             type="submit"
             [disabled]="registerFormGroup.invalid"
