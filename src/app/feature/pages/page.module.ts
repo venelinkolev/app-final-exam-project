@@ -13,6 +13,7 @@ import { DetailsPageComponent } from './details-page/details-page.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { EditComponent } from './edit/edit.component';
 import { UtilModule } from 'src/app/util/util.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UtilModule } from 'src/app/util/util.module';
     FormsModule,
     ReactiveFormsModule,
     UtilModule,
+    SharedModule,
   ],
   exports: [],
 })

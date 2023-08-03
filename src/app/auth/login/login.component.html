@@ -30,7 +30,12 @@
             >
               Email is required!
             </p>
-            <p></p>
+            <p
+              *ngIf="loginFormGroup.controls['email'].errors?.['email']"
+              class="error"
+            >
+              Email is invalid!
+            </p>
           </ng-container>
         </div>
         <div class="input-box p-1">
@@ -41,6 +46,19 @@
             placeholder="Password"
           />
           <i class="bx bx-lock-alt"></i>
+          <ng-container
+            *ngIf="
+              loginFormGroup.controls['password'].touched &&
+              loginFormGroup.controls['password'].invalid
+            "
+          >
+            <p
+              *ngIf="loginFormGroup.controls['password'].errors?.['minlength']"
+              class="error"
+            >
+              Password must be at least 5 characters!
+            </p>
+          </ng-container>
         </div>
 
         <div class="input-box p-1">

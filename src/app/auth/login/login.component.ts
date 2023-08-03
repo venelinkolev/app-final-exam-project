@@ -18,10 +18,7 @@ import { LUser } from 'src/app/types/user';
 })
 export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup = this.formBilder.group({
-    email: new FormControl('', {
-      validators: [Validators.required, Validators.email],
-      updateOn: 'submit',
-    }),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(5),

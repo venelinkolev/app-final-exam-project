@@ -62,10 +62,11 @@ export class RecipeFormComponent implements OnInit {
       error: (err) => {
         console.log(err);
       },
+      complete: () => {},
     });
 
-    newRecipeForm.resetForm();
     this.router.navigate(['/recipes/my-recipes']);
+    newRecipeForm.resetForm();
   }
 
   editRecipe(editRecipeForm: NgForm): void {

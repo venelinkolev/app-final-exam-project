@@ -14,6 +14,7 @@ const recipeSchema = new mongoose.Schema(
     ingredients: {
       type: String,
       required: [true, "Ingredients is required!"],
+      minlength: [15, "Ingredients must be at least 15 characters long."],
     },
     prepTime: {
       type: Number,
@@ -33,7 +34,7 @@ const recipeSchema = new mongoose.Schema(
     servings: {
       type: Number,
       required: [true, "Servings is required!"],
-      min: [1, "The Servings should be more that 1!"],
+      min: [1, "The Servings should be more that 0!"],
     },
     userId: {
       type: ObjectId,

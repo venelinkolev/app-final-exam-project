@@ -8,8 +8,18 @@
         type="text"
         class="input-field"
         placeholder="Recipe Name"
+        required
+        minlength="2"
       />
       <i class="bx bx-envelope"></i>
+      <ng-container *ngIf="recipeName.touched && recipeName.invalid">
+        <p *ngIf="recipeName.errors?.['required']" class="error">
+          Recipe Name is required!
+        </p>
+        <p *ngIf="recipeName.errors?.['minlength']" class="error">
+          Recipe Name must be at least 2 characters long.
+        </p>
+      </ng-container>
     </div>
     <div class="input-box p-1">
       <input
@@ -17,10 +27,20 @@
         name="imageUrl"
         #imageUrl="ngModel"
         ngModel
+        required
+        appHttpValidator
         class="input-field"
         placeholder="Image Url"
       />
       <i class="bx bx-envelope"></i>
+      <ng-container *ngIf="imageUrl.touched && imageUrl.invalid">
+        <p *ngIf="imageUrl.errors?.['required']" class="error">
+          ImageUrl is required!
+        </p>
+        <p *ngIf="imageUrl.errors?.['default']" class="error">
+          Url stars only with 'http://' or 'https://'
+        </p>
+      </ng-container>
     </div>
     <div class="input-box p-1">
       <textarea
@@ -28,10 +48,20 @@
         name="ingredients"
         #ingredients="ngModel"
         ngModel
+        required
+        minlength="15"
         class="textarea"
         placeholder="Ingredients"
       ></textarea>
       <i class="bx bx-envelope"></i>
+      <ng-container *ngIf="ingredients.touched && ingredients.invalid">
+        <p *ngIf="ingredients.errors?.['required']" class="error">
+          Ingredients is required!
+        </p>
+        <p *ngIf="ingredients.errors?.['minlength']" class="error">
+          Ingredients must be at least 15 characters long!
+        </p>
+      </ng-container>
     </div>
     <div class="two-forms">
       <div class="input-box p-1">
@@ -40,10 +70,20 @@
           name="prepTime"
           #prepTime="ngModel"
           ngModel
+          required
+          appMinValue
           class="input-field"
           placeholder="Prep Time(min.)"
         />
         <i class="bx bx-user"></i>
+        <ng-container *ngIf="prepTime.touched && prepTime.invalid">
+          <p *ngIf="prepTime.errors?.['required']" class="error">
+            Prep Time is required!
+          </p>
+          <p *ngIf="prepTime.errors?.['default']" class="error">
+            The time should be more that 0 minute!
+          </p>
+        </ng-container>
       </div>
       <div class="input-box p-1">
         <input
@@ -51,10 +91,20 @@
           name="cookTime"
           #cookTime="ngModel"
           ngModel
+          required
+          appMinValue
           class="input-field"
           placeholder="Cook Time(min.)"
         />
         <i class="bx bx-user"></i>
+        <ng-container *ngIf="cookTime.touched && cookTime.invalid">
+          <p *ngIf="cookTime.errors?.['required']" class="error">
+            Cook Time is required!
+          </p>
+          <p *ngIf="cookTime.errors?.['default']" class="error">
+            The time should be more that 0 minute!
+          </p>
+        </ng-container>
       </div>
     </div>
     <div class="two-forms">
@@ -64,10 +114,20 @@
           name="totalTime"
           #totalTime="ngModel"
           ngModel
+          required
+          appMinValue
           class="input-field"
           placeholder="Total Time(min.)"
         />
         <i class="bx bx-user"></i>
+        <ng-container *ngIf="totalTime.touched && totalTime.invalid">
+          <p *ngIf="totalTime.errors?.['required']" class="error">
+            Total Time is required!
+          </p>
+          <p *ngIf="totalTime.errors?.['default']" class="error">
+            The time should be more that 0 minute!
+          </p>
+        </ng-container>
       </div>
       <div class="input-box p-1">
         <input
@@ -75,15 +135,30 @@
           name="servings"
           #servings="ngModel"
           ngModel
+          required
+          appMinValue
           class="input-field"
           placeholder="Servings"
         />
         <i class="bx bx-user"></i>
+        <ng-container *ngIf="servings.touched && servings.invalid">
+          <p *ngIf="servings.errors?.['required']" class="error">
+            Servings is required!
+          </p>
+          <p *ngIf="servings.errors?.['default']" class="error">
+            Servings should be more that 0!
+          </p>
+        </ng-container>
       </div>
     </div>
 
     <div class="input-box p-1">
-      <input type="submit" class="submit" value="Add Recipe" />
+      <input
+        type="submit"
+        class="submit"
+        [disabled]="newRecipeForm.invalid"
+        value="Add Recipe"
+      />
     </div>
     <!-- <div class="two-col">
             <div class="one">
@@ -108,20 +183,39 @@
         type="text"
         class="input-field"
         placeholder="Recipe Name"
+        required
+        minlength="2"
       />
       <i class="bx bx-envelope"></i>
+      <ng-container *ngIf="recipeName.touched && recipeName.invalid">
+        <p *ngIf="recipeName.errors?.['required']" class="error">
+          Recipe Name is required!
+        </p>
+        <p *ngIf="recipeName.errors?.['minlength']" class="error">
+          Recipe Name must be at least 2 characters long.
+        </p>
+      </ng-container>
     </div>
-    <!-- <p>{{ recipe.recipeName }}</p> -->
     <div class="input-box p-1">
       <input
         type="text"
         name="imageUrl"
         #imageUrl="ngModel"
         ngModel
+        required
+        appHttpValidator
         class="input-field"
         placeholder="Image Url"
       />
       <i class="bx bx-envelope"></i>
+      <ng-container *ngIf="imageUrl.touched && imageUrl.invalid">
+        <p *ngIf="imageUrl.errors?.['required']" class="error">
+          ImageUrl is required!
+        </p>
+        <p *ngIf="imageUrl.errors?.['default']" class="error">
+          Url stars only with 'http://' or 'https://'
+        </p>
+      </ng-container>
     </div>
     <div class="input-box p-1">
       <textarea
@@ -129,10 +223,20 @@
         name="ingredients"
         #ingredients="ngModel"
         ngModel
+        required
+        minlength="15"
         class="textarea"
         placeholder="Ingredients"
       ></textarea>
       <i class="bx bx-envelope"></i>
+      <ng-container *ngIf="ingredients.touched && ingredients.invalid">
+        <p *ngIf="ingredients.errors?.['required']" class="error">
+          Ingredients is required!
+        </p>
+        <p *ngIf="ingredients.errors?.['minlength']" class="error">
+          Ingredients must be at least 15 characters long!
+        </p>
+      </ng-container>
     </div>
     <div class="two-forms">
       <div class="input-box p-1">
@@ -141,10 +245,20 @@
           name="prepTime"
           #prepTime="ngModel"
           ngModel
+          required
+          appMinValue
           class="input-field"
           placeholder="Prep Time(min.)"
         />
         <i class="bx bx-user"></i>
+        <ng-container *ngIf="prepTime.touched && prepTime.invalid">
+          <p *ngIf="prepTime.errors?.['required']" class="error">
+            Prep Time is required!
+          </p>
+          <p *ngIf="prepTime.errors?.['default']" class="error">
+            The time should be more that 0 minute!
+          </p>
+        </ng-container>
       </div>
       <div class="input-box p-1">
         <input
@@ -152,10 +266,20 @@
           name="cookTime"
           #cookTime="ngModel"
           ngModel
+          required
+          appMinValue
           class="input-field"
           placeholder="Cook Time(min.)"
         />
         <i class="bx bx-user"></i>
+        <ng-container *ngIf="cookTime.touched && cookTime.invalid">
+          <p *ngIf="cookTime.errors?.['required']" class="error">
+            Cook Time is required!
+          </p>
+          <p *ngIf="cookTime.errors?.['default']" class="error">
+            The time should be more that 0 minute!
+          </p>
+        </ng-container>
       </div>
     </div>
     <div class="two-forms">
@@ -165,10 +289,20 @@
           name="totalTime"
           #totalTime="ngModel"
           ngModel
+          required
+          appMinValue
           class="input-field"
           placeholder="Total Time(min.)"
         />
         <i class="bx bx-user"></i>
+        <ng-container *ngIf="totalTime.touched && totalTime.invalid">
+          <p *ngIf="totalTime.errors?.['required']" class="error">
+            Total Time is required!
+          </p>
+          <p *ngIf="totalTime.errors?.['default']" class="error">
+            The time should be more that 0 minute!
+          </p>
+        </ng-container>
       </div>
       <div class="input-box p-1">
         <input
@@ -176,15 +310,30 @@
           name="servings"
           #servings="ngModel"
           ngModel
+          required
+          appMinValue
           class="input-field"
           placeholder="Servings"
         />
         <i class="bx bx-user"></i>
+        <ng-container *ngIf="servings.touched && servings.invalid">
+          <p *ngIf="servings.errors?.['required']" class="error">
+            Servings is required!
+          </p>
+          <p *ngIf="servings.errors?.['default']" class="error">
+            Servings should be more that 0!
+          </p>
+        </ng-container>
       </div>
     </div>
 
     <div class="input-box p-1">
-      <input type="submit" class="submit" value="Save Recipe" />
+      <input
+        type="submit"
+        [disabled]="editRecipeForm.invalid"
+        class="submit"
+        value="Save Recipe"
+      />
     </div>
     <!-- <div class="two-col">
               <div class="one">
@@ -196,5 +345,4 @@
               </div>
             </div> -->
   </form>
-  <!-- </div> -->
 </ng-container>
