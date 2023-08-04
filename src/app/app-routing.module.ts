@@ -1,12 +1,9 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './feature/pages/home/home.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { CatalogComponent } from './feature/pages/catalog/catalog.component';
 import { NewRecipeComponent } from './feature/pages/new-recipe/new-recipe.component';
 import { MyRecipeComponent } from './feature/pages/my-recipe/my-recipe.component';
-import { SearchComponent } from './feature/pages/search/search.component';
 import { NotFoundPageComponent } from './feature/pages/not-found-page/not-found-page.component';
 import { DetailsPageComponent } from './feature/pages/details-page/details-page.component';
 import { EditComponent } from './feature/pages/edit/edit.component';
@@ -58,8 +55,10 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    title: 'Search',
-    component: SearchComponent,
+    loadChildren: () =>
+      import('./feature/search/search.module').then((m) => m.SearchModule),
+    // title: 'Search',
+    // component: SearchComponent,
   },
   {
     path: 'auth',

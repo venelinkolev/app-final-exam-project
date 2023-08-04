@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ErrorMessageService } from 'src/app/services/error-message.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { UserService } from 'src/app/services/user.service';
+import { MessageType } from 'src/app/types/message';
 import { IRecipe } from 'src/app/types/recipe';
 
 @Component({
@@ -19,7 +21,8 @@ export class DetailsComponent implements OnInit {
   constructor(
     private recipeService: RecipeService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private errorMesage: ErrorMessageService
   ) {}
 
   newLine(): string[] {
@@ -38,6 +41,12 @@ export class DetailsComponent implements OnInit {
         //console.log(err);
       },
     });
+
+    this.errorMesage.getErrorMessage({
+      message: 'Success Delete Recipe!',
+      type: MessageType.Success,
+    });
+
     this.router.navigate(['/recipes/my-recipes']);
     //   this.recipeService.deleteRecipe$(id);
   }

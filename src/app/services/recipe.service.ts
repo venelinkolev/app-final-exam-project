@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { IRecipe } from '../types/recipe';
@@ -32,6 +32,18 @@ export class RecipeService {
     return this.http.get<IRecipe[]>(`${environment.url}/recipes`, {
       withCredentials: true,
     });
+  }
+
+  search$(search: string = ''): Observable<IRecipe[]> {
+    //console.log(search);
+    return this.http.get<IRecipe[]>(
+      `${environment.url}/search?title=${search}`,
+      {
+        params: new HttpParams({
+          fromObject: {},
+        }),
+      }
+    );
   }
 
   getRecipesByUserId$(): Observable<IRecipe[]> {

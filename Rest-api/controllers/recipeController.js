@@ -9,6 +9,16 @@ function getThemes(req, res, next) {
     .catch(next);
 }
 
+function search(req, res, next) {
+  const search = req.query.title || "";
+  recipeModel
+    //.find()
+    .find({ recipeName: { $regex: search, $options: "i" } })
+    //.populate("userId")
+    .then((themes) => res.json(themes))
+    .catch(next);
+}
+
 function getRecipe(req, res, next) {
   const { themeId } = req.params;
   //console.log(themeId);
@@ -30,7 +40,7 @@ function deleteRecipe(req, res, next) {
   recipeModel
     .findByIdAndDelete(themeId)
     .then(() => {
-      console.log("Delete");
+      //console.log("Delete");
     })
     .catch(next);
 }
@@ -166,4 +176,5 @@ module.exports = {
   subscribe,
   updateRecipe,
   deleteRecipe,
+  search,
 };

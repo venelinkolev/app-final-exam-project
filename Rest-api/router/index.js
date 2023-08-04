@@ -4,11 +4,12 @@ const themes = require("./themes");
 const posts = require("./posts");
 const likes = require("./likes");
 const test = require("./test");
-const { authController } = require("../controllers");
+const { authController, recipeController } = require("../controllers");
 
 router.post("/register", authController.register);
 router.post("/login", authController.login);
 router.post("/logout", authController.logout);
+router.get("/search", recipeController.search);
 
 router.use("/users", users);
 router.use("/recipes", themes);

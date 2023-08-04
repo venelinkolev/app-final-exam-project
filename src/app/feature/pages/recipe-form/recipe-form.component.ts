@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ErrorMessageService } from 'src/app/services/error-message.service';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { MessageType } from 'src/app/types/message';
 import { IRecipe } from 'src/app/types/recipe';
 
 @Component({
@@ -9,7 +11,7 @@ import { IRecipe } from 'src/app/types/recipe';
   templateUrl: './recipe-form.component.html',
   styleUrls: ['./recipe-form.component.css'],
 })
-export class RecipeFormComponent implements OnInit {
+export class RecipeFormComponent implements OnInit, OnDestroy {
   editRecipeMode: boolean = false;
   currentRecipe!: IRecipe[];
   idEditRecipe!: string;
@@ -19,7 +21,8 @@ export class RecipeFormComponent implements OnInit {
   constructor(
     private router: Router,
     private recipeService: RecipeService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private errorMesage: ErrorMessageService
   ) {}
   ngOnInit(): void {
     console.log(this.editRecipeMode);
@@ -65,8 +68,13 @@ export class RecipeFormComponent implements OnInit {
       complete: () => {},
     });
 
-    this.router.navigate(['/recipes/my-recipes']);
+    this.errorMesage.getErrorMessage({
+      message: 'Success Create New Recipe!',
+      type: MessageType.Success,
+    });
+
     newRecipeForm.resetForm();
+    //this.router.navigate(['/recipes/my-recipes']);
   }
 
   editRecipe(editRecipeForm: NgForm): void {
@@ -75,15 +83,23 @@ export class RecipeFormComponent implements OnInit {
       .updateRecipe$(this.idEditRecipe, editRecipeForm.value)
       .subscribe({
         next: (recipe) => {
-          console.log(recipe);
+          console.log('Next', recipe);
         },
         error: (err) => {
           console.log(err);
         },
-        complete: () => {},
+        complete: () => {
+          console.log('Complete Edit');
+        },
       });
 
     editRecipeForm.resetForm();
     this.router.navigate([`/recipes/${this.idEditRecipe}/details`]);
+    this.errorMesage.getErrorMessage({
+      message: 'Success Edit Recipe!',
+      type: MessageType.Success,
+    });
   }
+
+  ngOnDestroy(): void {}
 }

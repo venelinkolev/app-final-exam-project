@@ -6,6 +6,7 @@ const { recipeController, postController } = require("../controllers");
 // middleware that is specific to this router
 
 router.get("/", recipeController.getThemes);
+
 router.post("/new-recipe", auth(), recipeController.createTheme);
 
 router.get("/:themeId/details", recipeController.getRecipe);
