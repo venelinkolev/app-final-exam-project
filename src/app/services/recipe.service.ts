@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { IRecipe } from '../types/recipe';
 import { environment } from 'src/environments/environment.development';
 
@@ -8,7 +8,22 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root',
 })
 export class RecipeService {
+
+  private _recipe = new BehaviorSubject<IRecipe[] | undefined>(undefined);
+
+  recipe$: Observable<IRecipe[] | undefined> = this._recipe.asObservable();
+  currentRecipeId$: Observable<string> = this.recipe$.pipe(map((recipe) => {
+    if (!!recipe) {
+      return recipe[0]._id;
+    }
+    return '';
+  }))
+
   constructor(private http: HttpClient) {}
+
+  recipeHendler(recipe: IRecipe[]) {
+    this._recipe.next(recipe);
+  }
 
   createNewRecipe$(body: {
     recipeName: string;

@@ -34,27 +34,16 @@ export class UserGuard implements CanActivate {
 
     console.log(userId);
 
-    this.activatedRoute.params.subscribe(
-      (params) => (recipeId = params['idRecipe'])
-    );
+    this.recipeService.currentRecipeId$.subscribe(id => recipeId = id);
 
     console.log(recipeId);
 
-    return this.activatedRoute.params
-      .pipe(
-        take(1),
-        mergeMap((params) => {
-          const id = params['idRecipe'];
-          return this.recipeService.getRecipe$(id);
-        })
-      )
-      .pipe(
-        map((recipe) => {
-          if (recipe[0].userId == userId) {
-            return true;
-          }
-          return this.router.createUrlTree(['/auth/login']);
-        })
-      );
+    return this.recipeService.getRecipe$(recipeId).pipe(map((recipe) => {
+      if (recipe[0].userId == userId) {
+        return true;
+      }
+      return this.router.createUrlTree(['/auth/login']);
+    }))
+      
   }
 }
