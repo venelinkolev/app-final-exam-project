@@ -8,6 +8,7 @@ import { NotFoundPageComponent } from './feature/pages/not-found-page/not-found-
 import { DetailsPageComponent } from './feature/pages/details-page/details-page.component';
 import { EditComponent } from './feature/pages/edit/edit.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { UserGuard } from './core/guards/user.guard';
 
 const routes: Routes = [
   {
@@ -43,7 +44,7 @@ const routes: Routes = [
       {
         path: ':idRecipe/edit',
         title: 'Edit Recipe',
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, UserGuard],
         component: EditComponent,
       },
       {
