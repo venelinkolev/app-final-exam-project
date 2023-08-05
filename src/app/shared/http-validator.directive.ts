@@ -16,7 +16,7 @@ export class HttpValidatorDirective implements Validator {
     let str = control.value;
     //console.log('HTTP-String', str);
     if (!!str) {
-      if (str.startsWith('http://') || str.startsWith('https://')) {
+      if (str.startsWith('http://') || str.startsWith('https://') || str.startsWith('data:image/')) {
         return null;
       }
     }

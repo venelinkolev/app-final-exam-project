@@ -29,6 +29,8 @@ export class DetailsPageComponent implements OnInit {
         this.currentDetailsRecipe = recipe;
         this.isDetailsPage = true;
 
+        this.recipeService.recipeHendler(recipe);
+
         console.log(recipe);
       });
     });
