@@ -23,6 +23,14 @@ export class UserService {
       return '';
     })
   );
+  userFullName$: Observable<string | null> = this.user$.pipe(
+    map((user) => {
+      if (!!user) {
+        return `${user?.firstName} ${user?.lastName}`;
+      }
+      return null;
+    })
+  );
 
   constructor(private httpClient: HttpClient) {}
 

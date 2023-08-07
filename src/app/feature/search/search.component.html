@@ -1,9 +1,19 @@
-<p>search works! Test</p>
-
-<form>
-  <input
-    [formControl]="searchFormControl"
-    type="text"
-    placeholder="Search for Recipes"
-  />
-</form>
+<div class="row justify-content-md-center p-2">
+  <div class="col-md-6">
+    <form>
+      <input
+        class="input-field"
+        [formControl]="searchFormControl"
+        type="text"
+        placeholder="Search for Recipes"
+      />
+    </form>
+  </div>
+</div>
+<div class="row justify-content-md-center p-2" *ngIf="recipes">
+  <div class="col-md-auto text-center" *ngFor="let recipe of recipes">
+    <app-recipe [recipe]="recipe"></app-recipe>
+  </div>
+  <div class="text-center" *ngIf="recipes.length === 0">No Recipes!</div>
+</div>
+<div *ngIf="!recipes">Loading...</div>

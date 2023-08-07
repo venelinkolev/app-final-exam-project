@@ -36,6 +36,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     UtilModule,
     SharedModule,
   ],
-  exports: [],
+  exports: [RecipeComponent],
 })
 export class PageModule {}

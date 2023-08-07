@@ -1,1 +1,8 @@
-
+.userName {
+  color: rgb(251, 188, 30);
+  text-align: right;
+  text-shadow: 2px 2px 4px rgb(255, 255, 255);
+  padding: 3px;
+  font-weight: 500;
+  -webkit-text-stroke: 0.2px black;
+}

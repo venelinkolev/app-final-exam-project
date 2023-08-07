@@ -1,4 +1,7 @@
 <div class="container text-center mt-5">
+  <div *ngIf="userFullName$ | async" class="userName">
+    Welcome {{ userFullName$ | async }}!
+  </div>
   <div class="row">
     <div class="col-md">
       <nav class="navbar rounded-3 bg-warning">

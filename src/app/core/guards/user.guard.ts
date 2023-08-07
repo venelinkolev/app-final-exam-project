@@ -26,7 +26,7 @@ export class UserGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> {
+  ): Observable<boolean | UrlTree> | UrlTree {
     let userId: string = '';
     let recipeId: string = '';
 
@@ -34,16 +34,21 @@ export class UserGuard implements CanActivate {
 
     console.log(userId);
 
-    this.recipeService.currentRecipeId$.subscribe(id => recipeId = id);
+    this.recipeService.currentRecipeId$.subscribe((id) => (recipeId = id));
 
     console.log(recipeId);
 
-    return this.recipeService.getRecipe$(recipeId).pipe(map((recipe) => {
-      if (recipe[0].userId == userId) {
-        return true;
-      }
-      return this.router.createUrlTree(['/auth/login']);
-    }))
-      
+    if (recipeId != '') {
+      return this.recipeService.getRecipe$(recipeId).pipe(
+        map((recipe) => {
+          if (recipe[0].userId == userId) {
+            return true;
+          }
+          return this.router.createUrlTree(['/catalog']);
+        })
+      );
+    } else {
+      return this.router.createUrlTree(['/catalog']);
+    }
   }
 }

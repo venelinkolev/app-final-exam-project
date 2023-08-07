@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   message!: string;
   messageErrorType!: boolean;
 
+  userFullName$: Observable<string | null> = this.userService.userFullName$;
+
   private subscription: Subscription = new Subscription();
 
   constructor(
