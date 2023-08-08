@@ -19,3 +19,8 @@
 .card {
   width: fit-content;
 }
+.imageHeight {
+  height: 30rem;
+  width: 30rem;
+  box-shadow: 2px 2px 25px black;
+}

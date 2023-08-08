@@ -4,7 +4,7 @@
     <div class="col-md-auto rounded-3 bg-dark p-2 text-white bg-opacity-25">
       <div class="row justify-content-md-center" *ngIf="recipes">
         <!-- <div *ngIf="myRecipes"> -->
-        <div class="col p-2" *ngFor="let recipe of recipes">
+        <div class="col-md-auto text-center p-2" *ngFor="let recipe of recipes">
           <div class="card recipe">
             <img
               src="{{ recipe.imageUrl }}"
