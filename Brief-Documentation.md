@@ -41,3 +41,49 @@
 - Shared - две дериктиви за валидация в темплейтна форма.
 - Types - типизирани интерфейси в приложението.
 - Util - помощни функиции и пайпове в приложението.
+
+## =========================================== EN ========================================================
+
+# TECHNICAL PLATFORM
+
+The My Recipes client application is an Angular web application that runs in a browser.
+The design principle is to make it as easy as possible for the customer.
+
+# CLIENT-SERVER COMMUNICATION
+
+Client-server communication is implemented in a REST-API server. Data format is JSON.
+
+# SECURITY
+
+The system is secure as operations process user data.
+
+The application implements basic security behaviors: - Authentication: Users are authenticated based on an authentication token.
+After logging in, the user receives an authentication token from the server. - Authenticated user gets access to additional pages in the application.
+
+# ARCHITECTURE
+
+A layered architecture is used to make modules and components as few as possible
+dependent on each other.
+
+# LOCATION
+
+The application is implemented in English. User can also use it in other languages.
+
+# REGISTRATION
+
+Registration is done through a form. All fields are mandatory and with the necessary validation.
+The entry is again of a separate form. Mandatory fields (email and password), and with the necessary validation.
+
+# COOKIES
+
+The client uses a cookie store to store user data such as userId and authentication token.
+
+# LAYERS IN THE APP
+
+- Auth - Login and Login components.
+- Core - header and footer components. Guards and interceptors in the application.
+- Feature - components for all pages in the application.
+- Services - services in the application. Custom, Recipes and display of Errors and messages.
+- Shared - two validation directives in template form.
+- Types - typed interfaces in the application.
+- Util - utility functions and pipes in the application.
