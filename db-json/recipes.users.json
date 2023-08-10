@@ -2,8 +2,6 @@
   "_id": {
     "$oid": "64b29fa4ab8cee263487ad50"
   },
-  "themes": [],
-  "posts": [],
   "firstName": "Venelin",
   "lastName": "Kolev",
   "email": "venelinkolev@abv.bg",
@@ -20,8 +18,6 @@
   "_id": {
     "$oid": "64bbc7c8a49a130e7c94978e"
   },
-  "themes": [],
-  "posts": [],
   "firstName": "Mimi",
   "lastName": "Mimova",
   "email": "mimi@abv.bg",
@@ -38,8 +34,6 @@
   "_id": {
     "$oid": "64bbcd35a49a130e7c949792"
   },
-  "themes": [],
-  "posts": [],
   "firstName": "Pesho",
   "lastName": "Peshev",
   "email": "pesho@abv.bg",
@@ -56,8 +50,6 @@
   "_id": {
     "$oid": "64be49ad2d37cd0568b391cc"
   },
-  "themes": [],
-  "posts": [],
   "firstName": "Atanaska",
   "lastName": "Koleva",
   "email": "atanaska@abv.bg",
@@ -67,6 +59,38 @@
   },
   "updatedAt": {
     "$date": "2023-07-24T09:51:41.963Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64c8ecf608b3e35674abe855"
+  },
+  "firstName": "Ivan",
+  "lastName": "Ivanov",
+  "email": "ivan@abv.bg",
+  "password": "$2b$05$wCf9.xEeHs845Y97tXK8UuZgcFcSSR5b7OP6G6jqET2EAMrrX7G/.",
+  "created_at": {
+    "$date": "2023-08-01T11:31:02.547Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-01T11:31:02.547Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64cbb0cd3c3884322c53ecae"
+  },
+  "firstName": "Onqskonq",
+  "lastName": "Onqskonq",
+  "email": "todorisdead@gmail.com",
+  "password": "$2b$05$tVsa.WIXPUVdxvwKqDSwxeeLCGMDT4EXhJpw61pRxnzcorRN7J6iC",
+  "created_at": {
+    "$date": "2023-08-03T13:51:09.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-03T13:51:09.603Z"
   },
   "__v": 0
 }]
