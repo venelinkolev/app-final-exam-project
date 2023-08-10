@@ -16,7 +16,9 @@
               <p class="text-dark">
                 {{ recipe.ingredients | slice : 0 : 25 }}...
               </p>
-              <a href="/recipes/{{ recipe._id }}/details" class="btn btn-dark"
+              <a
+                routerLink="/recipes/{{ recipe._id }}/details"
+                class="btn btn-dark"
                 >Details</a
               >
             </div>
