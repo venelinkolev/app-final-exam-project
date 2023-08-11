@@ -26,33 +26,34 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): void {
     console.log(this.editRecipeMode);
-    this.activatedRoute.params.subscribe((params) => {
-      const idRecipe = params['idRecipe'];
+    // this.activatedRoute.params.subscribe((params) => {
+    //   const idRecipe = params['idRecipe'];
+    const idRecipe = this.activatedRoute.snapshot.params['idRecipe'];
 
-      this.idEditRecipe = idRecipe;
+    this.idEditRecipe = idRecipe;
 
-      if (idRecipe) {
-        console.log(idRecipe);
+    if (idRecipe) {
+      console.log(idRecipe);
 
-        this.recipeService.getRecipe$(idRecipe).subscribe((recipe) => {
-          this.editRecipeMode = true;
-          this.currentRecipe = recipe;
+      this.recipeService.getRecipe$(idRecipe).subscribe((recipe) => {
+        this.editRecipeMode = true;
+        this.currentRecipe = recipe;
 
-          setTimeout(() => {
-            this.editRecipeForm?.form.patchValue({
-              recipeName: this.currentRecipe[0].recipeName,
-              imageUrl: this.currentRecipe[0].imageUrl,
-              ingredients: this.currentRecipe[0].ingredients,
-              prepTime: this.currentRecipe[0].prepTime,
-              cookTime: this.currentRecipe[0].cookTime,
-              totalTime: this.currentRecipe[0].totalTime,
-              servings: this.currentRecipe[0].servings,
-            });
+        setTimeout(() => {
+          this.editRecipeForm?.form.patchValue({
+            recipeName: this.currentRecipe[0].recipeName,
+            imageUrl: this.currentRecipe[0].imageUrl,
+            ingredients: this.currentRecipe[0].ingredients,
+            prepTime: this.currentRecipe[0].prepTime,
+            cookTime: this.currentRecipe[0].cookTime,
+            totalTime: this.currentRecipe[0].totalTime,
+            servings: this.currentRecipe[0].servings,
           });
-          console.log(this.editRecipeMode, recipe);
         });
-      }
-    });
+        console.log(this.editRecipeMode, recipe);
+      });
+    }
+    //});
   }
 
   createNewRecipe(newRecipeForm: NgForm): void {

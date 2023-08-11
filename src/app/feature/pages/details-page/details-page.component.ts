@@ -21,18 +21,20 @@ export class DetailsPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      const id = params['idRecipe'];
-      //this.idRecipe = id;
+    // this.activatedRoute.params.subscribe((params) => {
+    //   const id = params['idRecipe'];
+    //this.idRecipe = id;
+    const id = this.activatedRoute.snapshot.params['idRecipe'];
+    console.log(id);
 
-      this.recipeService.getRecipe$(id).subscribe((recipe) => {
-        this.currentDetailsRecipe = recipe;
-        this.isDetailsPage = true;
+    this.recipeService.getRecipe$(id).subscribe((recipe) => {
+      this.currentDetailsRecipe = recipe;
+      this.isDetailsPage = true;
 
-        this.recipeService.recipeHendler(recipe);
+      this.recipeService.recipeHendler(recipe);
 
-        console.log(recipe);
-      });
+      console.log(recipe);
     });
+    //});
   }
 }
