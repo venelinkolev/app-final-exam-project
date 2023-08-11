@@ -30,9 +30,15 @@
           </tbody>
         </table>
         <hr />
-        <p class="text-dark" *ngFor="let ingredients of newLine()">
+        <p
+          class="text-dark"
+          *ngFor="let ingredients of detailsRecipe.ingredients | newLine"
+        >
           {{ ingredients }}
         </p>
+        <!-- <p class="text-dark" *ngFor="let ingredients of newLine()">
+          {{ ingredients }}
+        </p> -->
         <a
           *ngIf="!isDetailsPage"
           routerLink="/recipes/{{ detailsRecipe._id }}/details"

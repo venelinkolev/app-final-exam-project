@@ -25,9 +25,9 @@ export class DetailsComponent implements OnInit {
     private errorMesage: ErrorMessageService
   ) {}
 
-  newLine(): string[] {
-    return this.detailsRecipe.ingredients.split('\n');
-  }
+  // newLine(): string[] {
+  //   return this.detailsRecipe.ingredients.split('\n');
+  // }
 
   ngOnInit(): void {
     console.log('userId', this.detailsRecipe.userId);
