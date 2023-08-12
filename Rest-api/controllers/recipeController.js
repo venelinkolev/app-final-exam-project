@@ -39,9 +39,7 @@ function deleteRecipe(req, res, next) {
   //console.log(themeId);
   recipeModel
     .findByIdAndDelete(themeId)
-    .then(() => {
-      //console.log("Delete");
-    })
+    .then((recipe) => res.status(200).json(recipe))
     .catch(next);
 }
 
@@ -68,6 +66,7 @@ function updateRecipe(req, res, next) {
       totalTime,
       servings,
     })
+    .then((recipe) => res.status(200).json(recipe))
     .catch(next);
 }
 
@@ -100,9 +99,9 @@ function createTheme(req, res, next) {
     })
     // .then((theme) => {
     //   newPost(postText, userId, theme._id).then(([_, updatedTheme]) =>
-    //     res.status(200).json(updatedTheme)
     //   );
     // })
+    .then((recipe) => res.status(200).json(recipe))
     .catch(next);
 }
 
